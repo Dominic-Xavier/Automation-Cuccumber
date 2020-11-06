@@ -12,11 +12,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pageMethods.Address;
+
 public class WebTestBase {
-	static WebDriver driver;
+	public static WebDriver driver;
+	static JavascriptExecutor js;
 	public static void browser(String browserName) throws Exception {
 		switch (browserName.toLowerCase()) {
 		case "chrome":{
@@ -49,8 +54,12 @@ public class WebTestBase {
 	}
 	
 	public static void javascript(String script, WebElement element) {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js = (JavascriptExecutor) driver;
 		js.executeScript(script, element);
+	}
+	
+	public static void scrollView(WebElement element) {
+		javascript("arguments[0].scrollIntoView();", element);
 	}
 	
 	public static void screenShot(String fileName) throws IOException {
@@ -73,5 +82,29 @@ public class WebTestBase {
 		driver.close();
 	}
 	
+	public static void click(WebElement element) {
+		try {
+			element.click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
+	public static void sendKeys(WebElement element, String value) {
+		try {
+			element.sendKeys(value);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void dropdown(WebElement element, String visibleText) {
+		Select select = new Select(element);
+		select.selectByVisibleText(visibleText);
+	}
+	
+	public static void mouseOver(WebElement element) {
+		Actions actions = new Actions(driver);
+		actions.moveToElement(element).build().perform();
+	}
 }
