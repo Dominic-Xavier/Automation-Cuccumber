@@ -16,8 +16,18 @@ public class Category extends WebTestBase {
 	
 	@FindAll(value = {@FindBy(xpath = "//ul[@class='sf-menu clearfix menu-content sf-js-enabled sf-arrows']//li")})
 	private List<WebElement> categorys;
+	
+	@FindBy(xpath = "//a[@title='List']")
+	private WebElement listView;
+
+	public WebElement getListView() {
+		return listView;
+	}
 
 	public List<WebElement> getCategorys() {
 		return categorys;
 	}
+	
+	@FindBy(xpath = "(//a[@title='Add to cart'])[2]")
+	private WebElement ele;
 }
