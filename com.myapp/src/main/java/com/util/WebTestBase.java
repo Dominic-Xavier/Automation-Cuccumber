@@ -24,26 +24,26 @@ public class WebTestBase {
 	static JavascriptExecutor js;
 	public static void browser(String browserName) throws Exception {
 		switch (browserName.toLowerCase()) {
-		case "chrome":{
-			System.setProperty("webdriver.chrome.driver", "./src/main/java/browserDrivers/chromedriver.exe");
-			driver = new ChromeDriver();
-			break;
-		}
-		
-		case "firefox":{
-			System.setProperty("webdriver.gecko.driver", "./src/main/java/browserDrivers/geckodriver.exe");
-			driver = new FirefoxDriver();
-			break;
-		}
-		
-		case "internet explorer":{
-			System.setProperty("webdriver.ie.driver", "./src/main/java/browserDrivers/IEDriverServer.exe");
-			driver = new FirefoxDriver();
-			break;
-		}
-		
-		default:
-			throw new Exception("Incorrect option");
+			case "chrome":{
+				System.setProperty("webdriver.chrome.driver", "./src/main/java/browserDrivers/chromedriver.exe");
+				driver = new ChromeDriver();
+				break;
+			}
+			
+			case "firefox":{
+				System.setProperty("webdriver.gecko.driver", "./src/main/java/browserDrivers/geckodriver.exe");
+				driver = new FirefoxDriver();
+				break;
+			}
+			
+			case "internet explorer":{
+				System.setProperty("webdriver.ie.driver", "./src/main/java/browserDrivers/IEDriverServer.exe");
+				driver = new FirefoxDriver();
+				break;
+			}
+			
+			default:
+				throw new Exception("Incorrect option");
 		}
 		
 		driver.manage().window().maximize();

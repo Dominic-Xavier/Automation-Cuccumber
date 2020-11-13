@@ -9,7 +9,7 @@ import com.util.WebTestBase;
 import pageMethods.Category;
 
 public class AddToCart {
-	static Category elements = new Category();
+	static Category elements = Category.getInstance();
 	public  static void choosecategory(String category, String Sub_category) {
 		List<WebElement> allcategory = elements.getCategorys();
 		for (WebElement webElement : allcategory) {
@@ -27,10 +27,10 @@ public class AddToCart {
 				break;
 			}
 		}
-		
 	}
 	
 	public static void viewType() {
+		elements.setIndex("2");
 		WebTestBase.click(elements.getListView());
 	}
 }
